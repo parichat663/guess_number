@@ -11,15 +11,15 @@ class Game{
 
   int doGuess(int num){
     if(num > answer){
-      print('$num is Too high');
+      print('$num is TOO HIGH! ▲');
       return 0;
     }
     else if(num < answer){
-      print('$num is Too low');
+      print('$num is TOO LOW ▼');
       return 0;
     }
     else{
-      print('$num is correct');
+      print('$num is CORRECT ✔');
       return 1;
     }
   }

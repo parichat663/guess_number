@@ -79,11 +79,11 @@ void main(){
   else{
     print('input ไม่เป็น null');
   }*/
-    var guess = int.tryParse(input!)!;//int = class name
-    //ลงท้ายด้วย ! เป็นการยืนยันว่า guess จะไม่มีทางเป็น null ได้แน่นอน
+    var guess = int.tryParse(input!);//int = class name
+    //ถ้าลงท้าย(input!)ด้วย ! อีกรอบจะเป็นการยืนยันว่า guess จะไม่มีทางเป็น null ได้แน่นอนและโปรแกรมจะ error
 
     if(guess == null){
-      print('Please enter number only');
+      print('Please enter number only ☹');
       continue;
     }
     //print('input มีค่า = $input');
@@ -101,8 +101,8 @@ void main(){
     count++;
   }
   while(result == 0);
-    print('amount = $count');
-    stdout.write('Do you want to play again?(y/n) : ');
+    print('total guesses: $count');
+    stdout.write('Do you want to play again?(y/n): ');
     var want = stdin.readLineSync();
     if(want == 'y'){
       print('Start Game');
