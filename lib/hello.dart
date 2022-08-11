@@ -63,18 +63,35 @@ import 'game.dart';
 /*
 int a = 0; //top-level variable
 */
+var myList = <int>[];
 void main(){
   /*var r = Random();
   var answer = r.nextInt(100) + 1;//random 1-100*/
   //print('answer = $answer');
-  var game = Game();
+  //Game g = new Game();
+  var game;
   var result = 0;
   var count = 0;
+  //var myList = <int>[];
+  stdout.write('Enter a maximum number to random: ');
+  var max = stdin.readLineSync();
+  var rmax = int.tryParse(max!);
+    if(rmax == null){
+      game = Game(maxRandom: 100);
+    }
+    else{
+      game = Game(maxRandom: rmax);
+    }
   print('╔════════════════════════════════════════════════════════════════════');
   print('║                        GUESS  THE  NUMBER  ');
   print('╟────────────────────────────────────────────────────────────────────');
   do{
-    stdout.write('║ Please guess the number between 1 and 100: ');
+    if(rmax == null){
+      stdout.write('║ Please guess the number between 1 and 100: ');
+    }
+    else{
+      stdout.write('║ Please guess the number between 1 and $rmax: ');
+    }
     var input = stdin.readLineSync();//stdin = class name
     /*if(input == null){
     print('input มีค่าเป็น null');
@@ -105,18 +122,24 @@ void main(){
     count++;
   }
   while(result == 0);
+    myList.add(count);
     print('║                           total guesses: $count ');
-  print('╟────────────────────────────────────────────────────────────────────');
-  print('║                               THE END ');
-  print('╚════════════════════════════════════════════════════════════════════');
-    /*stdout.write('Do you want to play again?(y/n): ');
+    print('╟────────────────────────────────────────────────────────────────────');
+    print('║                               THE END ');
+    print('╚════════════════════════════════════════════════════════════════════');
+    stdout.write('Do you want to play again?(y/n): ');
     var want = stdin.readLineSync();
-    if(want == 'y'){
+    if(want == 'y' || want == 'Y'){
       print('✌️Start Game   ✌️');
       main();
     }
-    else if(want == 'n'){
+    else if(want == 'n' || want == 'N'){
       print('🖤   Game Over   🖤');
-    }*/
+      var len = myList.length;
+      print("You've played $len games");
+      for (var i = 0; i < len; i++) {
+        print('🚀Game #${i+1}: ${myList[i]} guesses');
+      }
+    }
 }
 

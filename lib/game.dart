@@ -3,11 +3,16 @@ import 'dart:math';
 
 class Game{
   int answer = 0;//instance field
-  Game(){
+  Game({int? maxRandom}){
     var r = Random();
-    answer = r.nextInt(100) + 1;
+    answer = r.nextInt(maxRandom!) + 1;
     //print('answer = $answer');
   }
+
+  /*void maxRandom(int max){
+    var r = Random();
+    answer = r.nextInt(max) + 1;
+  }*/
 
   int doGuess(int num){
     if(num > answer){
